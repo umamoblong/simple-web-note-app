@@ -92,3 +92,104 @@ textarea {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+/* style.css - tambahkan di bagian akhir */
+
+/* Styling untuk card dengan gradasi warna */
+.card:nth-child(3n+1) {
+    border-top: 4px solid #3498db;
+}
+
+.card:nth-child(3n+2) {
+    border-top: 4px solid #2ecc71;
+}
+
+.card:nth-child(3n+3) {
+    border-top: 4px solid #9b59b6;
+}
+
+/* Styling untuk judul catatan */
+.card-title {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Styling untuk isi catatan */
+.card-text {
+    color: #34495e;
+    line-height: 1.6;
+    min-height: 60px;
+}
+
+/* Styling untuk tanggal */
+.text-muted {
+    color: #7f8c8d !important;
+}
+
+/* Styling untuk tombol aksi */
+.card-footer .btn {
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 0.85rem;
+}
+
+/* Styling untuk alert message */
+.alert-success {
+    background-color: #d5edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* Styling untuk modal */
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.modal-title {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* Styling untuk statistik card */
+.card .card-title i {
+    font-size: 1.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-footer .btn {
+        margin-bottom: 5px;
+        display: block;
+        width: 100%;
+    }
+    
+    .card-footer {
+        text-align: center;
+    }
+}
+
+/* Loading animation (jika diperlukan) */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

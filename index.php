@@ -1,8 +1,13 @@
 <?php
 require_once 'config/database.php';
 
+$where_clouse = '';
+if ($_GET['search'] ?? false) {
+    $search_term = mysqli_real_escape_string($conn, $_GET['search']);
+    $where_clouse = "WHERE title LIKE '%$search_term%' OR content LIKE '%$search_term%'";
+}
 // Ambil data catatan dari database
-$sql = "SELECT * FROM notes ORDER BY updated_at DESC";
+$sql = "SELECT * FROM notes " . $where_clouse . " ORDER BY updated_at DESC";
 $result = mysqli_query($conn, $sql);
 
 // Hitung total catatan
@@ -43,6 +48,31 @@ $total_notes = mysqli_num_rows($result);
     </div>
 </div>
 
+<!-- Tambahkan di index.php setelah bagian tips dan sebelum "Catatan Saya" -->
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="GET" action="" class="row g-3">
+            <div class="col-md-8">
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" 
+                           name="search" 
+                           class="form-control" 
+                           placeholder="Cari catatan berdasarkan judul atau isi..."
+                           value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="fas fa-search me-1"></i>Cari
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Catatan Saya</h2>
     <a href="notes/create.php" class="btn btn-primary">
@@ -80,7 +110,7 @@ $total_notes = mysqli_num_rows($result);
                         <a href="#" class="btn btn-sm btn-outline-secondary" 
                            data-bs-toggle="modal" 
                            data-bs-target="#noteModal<?php echo $note['id']; ?>">
-                            <i class="fas fa-eye me-1"></i>Lihat
+                            <i class="fas fa-eye me-1"></i>Detail
                         </a>
                     </div>
                 </div>
@@ -97,7 +127,9 @@ $total_notes = mysqli_num_rows($result);
                                 <p><?php echo nl2br(htmlspecialchars($note['content'])); ?></p>
                                 <hr>
                                 <small class="text-muted">
+                                    <i class="far fa-calendar-plus me-1"></i>
                                     Dibuat: <?php echo date('d/m/Y H:i', strtotime($note['created_at'])); ?><br>
+                                    <i class="far fa-calendar-check me-1"></i>
                                     Diperbarui: <?php echo date('d/m/Y H:i', strtotime($note['updated_at'])); ?>
                                 </small>
                             </div>
