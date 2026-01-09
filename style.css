@@ -1,0 +1,94 @@
+/* Custom styles untuk Simple Note App */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+}
+
+.footer {
+    box-shadow: 0 -2px 4px rgba(0,0,0,.05);
+}
+
+/* Animasi untuk alert */
+.alert {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive textarea */
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Custom badge */
+.badge-custom {
+    font-size: 0.8em;
+    padding: 0.4em 0.8em;
+}
+
+/* Hover effect untuk tombol */
+.btn {
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Card footer styling */
+.card-footer {
+    border-top: 1px solid rgba(0,0,0,.05);
+    background-color: rgba(0,0,0,.01);
+}
+
+/* Modal customization */
+.modal-content {
+    border-radius: 10px;
+    border: none;
+}
+
+/* Text truncation for long titles */
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
